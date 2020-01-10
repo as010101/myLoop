@@ -24,7 +24,7 @@ __thread int t_tidStringLength = 6;
 __thread const char* t_threadName = "default";
 }
 
-pid_t gettid() { return static_cast<pid_t>(::syscall(SYS_gettid)); }
+pid_t gettid() { return static_cast<pid_t>(::syscall(SYS_gettid)); }  //系统里唯一的线程id
 
 void CurrentThread::cacheTid() {
   if (t_cachedTid == 0) {

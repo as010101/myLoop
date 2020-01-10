@@ -2,8 +2,10 @@
 
 #include "EventLoop.h"
 
+#include <iostream>
 
-__thread  EventLoop* t_loopInThisThread = 0;    //预先申请的内存变量
+
+__thread  EventLoop*  t_loopInThisThread = 0;    //预先申请的内存变量
 
 //
 //EventLoop : : EventLoop()
@@ -30,8 +32,28 @@ __thread  EventLoop* t_loopInThisThread = 0;    //预先申请的内存变量
 
 
 EventLoop::EventLoop()
-    : looping_(false),
-      threadId_(CurrentThread::tid()){std::cout << " EventLoop created "
-                                                << "in thread " << threadId_}
+	: looping_(false),
+	threadId_(CurrentThread::tid()) {
+	std::cout << " EventLoop created "<< t_loopInThisThread
+		<< "in thread " << threadId_;
+	if (t_loopInThisThread)
+	{
+		std::cout << "Another EventLoop "<<t_loopInThisThread<< "appeared";
+	}
+	else
+	{
+		t_loopInThisThread = this;//this为何能赋给 t_loopInThisThread
+	}
+}
+//
+//EventLoop *  EventLoop::getEventLoopOfCurrentThread()
+//{
+//	return t_loopInThisThread;
+//}
 
-EventLoop::~EventLoop() {}
+
+EventLoop::~EventLoop() {
+	assert(!looping_);
+	t_loopInThisThread = nullptr; //null
+
+}

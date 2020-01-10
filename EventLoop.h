@@ -1,7 +1,8 @@
 #pragma once
 
 
-
+#include "Thread.h"
+#include <assert.h>
 
 class EventLoop {
  public:
@@ -15,6 +16,9 @@ class EventLoop {
 			  abortNotInLoopThread();
 			}
     }
+
+  //EventLoop* getEventLoopOfCurrentThread();
+
 
 
     bool isInLoopThread() const { return threadId_ == CurrentThread::tid(); }
