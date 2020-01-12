@@ -1,9 +1,9 @@
 
 
 #include "EventLoop.h"
-
+#include <poll.h>
 #include <iostream>
-
+#include "CurrentThread.h"
 
 __thread  EventLoop*  t_loopInThisThread = 0;    //预先申请的内存变量
 
@@ -39,6 +39,10 @@ void EventLoop::loop()
 
 }
 
+
+void EventLoop::abortNotInLoopThread()
+{
+}
 
 EventLoop::EventLoop()
 	: looping_(false),

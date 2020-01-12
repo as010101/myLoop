@@ -2,7 +2,7 @@
 // @Email xxbbb@vip.qq.com
 #pragma once
 #include <stdint.h>
-
+#include "Thread.h"
 namespace CurrentThread {
 // internal
 extern __thread int t_cachedTid;
