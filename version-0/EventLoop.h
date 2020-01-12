@@ -3,6 +3,7 @@
 
 #include "Thread.h"
 #include <assert.h>
+#include "CurrentThread.h"
 
 class EventLoop {
  public:
