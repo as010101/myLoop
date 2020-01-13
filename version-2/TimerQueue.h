@@ -7,6 +7,8 @@
 #include "MutexLock.h"
 #include "Callbacks.h"
 #include "Channel.h"
+#include "Timer.h"
+#include "TimerId.h"
 
 	class EventLoop;
 	class Timer;
