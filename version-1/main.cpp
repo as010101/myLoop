@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "Channel.h"
 #include "EventLoop.h"
+#include <string.h>
 
 #include <sys/timerfd.h>
 
