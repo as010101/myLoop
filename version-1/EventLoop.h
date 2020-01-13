@@ -16,7 +16,7 @@ class EventLoop {
 
   void loop();
   void updateChannel(Channel* channel);///这个要加上去嘛
-
+  void quit();
   void assertInLoopThread() {
 			if (!isInLoopThread()) {
 			  abortNotInLoopThread();
