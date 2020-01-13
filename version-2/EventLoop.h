@@ -7,6 +7,7 @@
 #include <vector>
 #include "Callbacks.h"
 #include "TimerId.h"
+#include "TimerQueue.h"
 #include <memory>
 
 class Channel;
@@ -18,7 +19,7 @@ class EventLoop {
   ~EventLoop();
   typedef  std::function<void()> Functor;
   void loop();
-  void updateChannel(Channel* channel);///这个要加上去嘛
+  void updateChannel(Channel* channel);///脮芒赂枚脪陋录脫脡脧脠楼脗茂
   void quit();
   void assertInLoopThread() {
 			if (!isInLoopThread()) {
