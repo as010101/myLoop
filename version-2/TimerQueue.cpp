@@ -8,10 +8,6 @@
 #include <iostream>
 #include <string.h>
 
-namespace muduo
-{
-	namespace detail
-	{
 
 		int createTimerfd()
 		{
@@ -66,11 +62,9 @@ namespace muduo
 			}
 		}
 
-	}
-}
 
-using namespace muduo;
-using namespace muduo::detail;
+
+
 
 TimerQueue::TimerQueue(EventLoop* loop)
 	: loop_(loop),
