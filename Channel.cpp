@@ -2,6 +2,7 @@
 #include "EventLoop.h"
 #include <sstream>
 #include <poll.h>
+#include<iostream>
 
 
 const int Channel::kNoneEvent = 0;
@@ -25,7 +26,7 @@ void Channel::update()
 void Channel::handleEvent()
 {
 	if (revents_ & POLLNVAL) {
-		LOG_WARN << "Channel::handle_event() POLLNVAL";
+		std::cout << "Channel::handle_event() POLLNVAL";
 	}
 
 	if (revents_ & (POLLERR | POLLNVAL)) {

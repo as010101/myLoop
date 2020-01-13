@@ -15,6 +15,7 @@ class EventLoop {
   ~EventLoop();
 
   void loop();
+  void updateChannel(Channel* channel);///这个要加上去嘛
 
   void assertInLoopThread() {
 			if (!isInLoopThread()) {
@@ -30,13 +31,12 @@ class EventLoop {
 
    private:
     void abortNotInLoopThread();
-    bool looping_;   
+
     const pid_t    threadId_;
 	typedef std::vector<Channel*> ChannelList;
-
 	bool looping_; /* atomic */
 	bool quit_; /* atomic */
-	const pid_t threadId_;
+
 	std::unique_ptr<Poller> poller_;
 	ChannelList activeChannels_;
 
