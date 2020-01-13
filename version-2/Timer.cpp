@@ -1,6 +1,6 @@
 #include "Timer.h"
 
-using namespace muduo;
+
 
 void Timer::restart(Timestamp now)
 {
