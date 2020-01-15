@@ -13,4 +13,6 @@ poller被唤醒后
 会将返回的numEvents和成员变量activeChannelList作为参数调用fillActiveChannels
 在  fillActiveChannels 中  将识别的channel(识别之后会对channel重新设置属性)推入  activeChannelList
 
-然后loop调用handleEvent，触发相应回调
+然后activeChannelList对每个channel调用handleEvent，触发相应回调
+
+继续poll
