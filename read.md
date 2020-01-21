@@ -3,7 +3,7 @@
 
 loop 中  while  {设置基本数据后  调用poller 的poll ,等poll返回 遍历activeChannellist，对每个元素进行handleEvent}
 
-loop要监听哪些fd，通过新生成channel,然后ennable，然后update
+loop要监听哪些fd，通过新生成channel,然后ennable，然后update（即加入用户关注的fd）
 
 
 
@@ -18,7 +18,7 @@ poller被唤醒后
 继续poll
 
 
-	  --loop 与 channel默认应该都是没fd的
+	  --loop 有产生默认的fd, channel没有产生fd
 	  ---server listen  产生第一个fd
 	  --有新的连接进来，产生fd
 	  --epoll对所有产生的fd进行监听
@@ -29,3 +29,6 @@ poller被唤醒后
 	  如果不用loop 和channel
 	  直接用server http 和 fd ,有何差别
 	  假设现在有一个listenfd,如果新连接到来，是如何通知listenfd，是写数据到listenfd的缓冲区吗
+
+
+eventLoop自己有一个channel 对象，每一个新的fd也应该有一个fd对象
