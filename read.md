@@ -16,3 +16,10 @@ poller被唤醒后
 然后activeChannelList对每个channel调用handleEvent，触发相应回调
 
 继续poll
+
+
+	  --loop 与 channel默认应该都是没fd的
+	  ---server listen  产生第一个fd
+	  --有新的连接进来，产生fd
+	  --epoll对所有产生的fd进行监听
+	  --所有有server产生的fd应由server自己关闭
