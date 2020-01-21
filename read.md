@@ -32,3 +32,6 @@ poller被唤醒后
 
 
 eventLoop自己有一个channel 对象，每一个新的fd也应该有一个fd对象
+
+fd---loop--poller--唤醒--loop--channel--channel的handleEvent--call回调
+
