@@ -35,3 +35,14 @@ eventLoop自己有一个channel 对象，每一个新的fd也应该有一个fd�
 
 fd---loop--poller--唤醒--loop--channel--channel的handleEvent--call回调
 
+当连接达到文件描述符的上限，此时没有可供你保存新连接套接字的文件描述符了，那么新来的连接就会一直放在accept队列中，于是呼应其可读事件就会一直触发读事件（因为你一直不读，也没办法读走它），这就是我们常常说的busy-loop.
+
+if (errno == EMFILE)
+    {
+      ::close(idleFd_);
+      idleFd_ = ::accept(acceptSocket_.fd(), NULL, NULL);
+      ::close(idleFd_);
+      idleFd_ = ::open("/dev/null", O_RDONLY | O_CLOEXEC);
+    }
+ 给一个无用的idleFd，出现busy-loop时，将其关闭，让accept返回连接的描述符，得到该值后，由于此时已达到最大连接，故将其关闭，同时，再开一个null-fd，重复以上，核心就是，让来到的连接不阻塞在accept一直busyloop，将其取出close掉，并不使用
+
