@@ -27,7 +27,7 @@ poller被唤醒后
 	  
 	  
 	  如果不用loop 和channel
-	  直接用server http 和 fd ,有何差别
+	  直接用server http 和 epoll fd ,有何差别
 	  假设现在有一个listenfd,如果新连接到来，是如何通知listenfd，是写数据到listenfd的缓冲区吗
 
 
