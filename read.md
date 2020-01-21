@@ -22,4 +22,4 @@ poller被唤醒后
 	  ---server listen  产生第一个fd
 	  --有新的连接进来，产生fd
 	  --epoll对所有产生的fd进行监听
-	  --所有有server产生的fd应由server自己关闭
+	  --所有有server产生的fd在http 的析构函数 close fd
