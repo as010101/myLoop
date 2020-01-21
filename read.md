@@ -23,3 +23,9 @@ poller被唤醒后
 	  --有新的连接进来，产生fd
 	  --epoll对所有产生的fd进行监听
 	  --所有有server产生的fd在http 的析构函数 close fd
+	  
+	  
+	  
+	  如果不用loop 和channel
+	  直接用server http 和 fd ,有何差别
+	  假设现在有一个listenfd,如果新连接到来，是如何通知listenfd，是写数据到listenfd的缓冲区吗
